@@ -6,6 +6,8 @@ import io.camunda.zeebe.client.api.worker.JobClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Map;
+
 @SpringBootApplication
 public class CamundaExercise2Application {
 
@@ -16,21 +18,22 @@ public class CamundaExercise2Application {
 
         System.out.println("Testing connection to Camunda SaaS...");
         try {
+
             zeebeClient.newTopologyRequest().send().join();
             System.out.println("Successfully connected to Camunda SaaS!");
 
             zeebeClient.newWorker()
-                    .jobType("print-hello")
-                    .handler(CamundaExercise2Application::handlePrintHelloJob)
+                    .jobType("issue_invoice")
+                    .handler(CamundaExercise2Application::handleIssueInvoiceJob)
                     .open();
 
-            System.out.println("Worker is ready to handle jobs...");
+            System.out.println("Workers are ready to handle jobs...");
 
             System.out.println("Starting a process instance...");
             zeebeClient.newCreateInstanceCommand()
-                    .bpmnProcessId("Process_1f1wxpi") // BPMN Process ID
+                    .bpmnProcessId("sid-BA5951D1-59EB-47F9-845C-86A953A2E19E") // BPMN Process ID
                     .latestVersion()
-                    .variables("{\"key\":\"value\"}")
+                    .variables("{\"key\":\"value\", \"invoice_number\": \"INV-12345\"}")
                     .send()
                     .join();
             System.out.println("Process instance started successfully!");
@@ -48,4 +51,33 @@ public class CamundaExercise2Application {
         jobClient.newCompleteCommand(job.getKey()).send().join();
         System.out.println("Job completed successfully!");
     }
+
+    private static void handleIssueInvoiceJob(JobClient jobClient, ActivatedJob job) {
+        Map<String, Object> variables = job.getVariablesAsMap();
+        System.out.println("Received Variables: " + variables);
+
+        Object amountObj = variables.get("number_8z5gkd");
+
+        String invoiceNumber = "INV-STATIC-001";
+
+        if (amountObj == null) {
+            System.err.println("Required amount variable is missing.");
+            jobClient.newFailCommand(job.getKey())
+                    .retries(0) // İş başarısız
+                    .errorMessage("Required amount variable is missing")
+                    .send()
+                    .join();
+            return;
+        }
+
+        double amount = Double.parseDouble(amountObj.toString());
+
+        System.out.println("Processing Issue Invoice job: " + job.getKey());
+        System.out.println("Invoice Number: " + invoiceNumber);
+        System.out.println("Invoice Amount: " + amount);
+
+        jobClient.newCompleteCommand(job.getKey()).send().join();
+        System.out.println("Issue Invoice job completed successfully!");
+    }
+
 }
