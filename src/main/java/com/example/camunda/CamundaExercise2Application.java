@@ -20,7 +20,7 @@ public class CamundaExercise2Application {
             System.out.println("Successfully connected to Camunda SaaS!");
 
             zeebeClient.newWorker()
-                    .jobType("print-hello") // BPMN Model'deki Job Type ile aynı olmalı
+                    .jobType("print-hello")
                     .handler(CamundaExercise2Application::handlePrintHelloJob)
                     .open();
 
