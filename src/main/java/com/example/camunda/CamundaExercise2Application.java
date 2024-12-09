@@ -63,7 +63,7 @@ public class CamundaExercise2Application {
         if (amountObj == null) {
             System.err.println("Required amount variable is missing.");
             jobClient.newFailCommand(job.getKey())
-                    .retries(0) // İş başarısız
+                    .retries(0)
                     .errorMessage("Required amount variable is missing")
                     .send()
                     .join();
