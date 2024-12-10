@@ -1,0 +1,30 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "0d4ab51"
+  },
+  "schemaVersion": 17,
+  "id": "Form_1aghlkt",
+  "components": [
+    {
+      "label": "Is the Invoice correct?",
+      "values": [
+        {
+          "label": "Yes",
+          "value": "yes"
+        }
+      ],
+      "type": "radio",
+      "layout": {
+        "row": "Row_11u8ie3",
+        "columns": null
+      },
+      "id": "Field_0oh7vz9",
+      "key": "radio_xvzaue",
+      "disabled": false
+    }
+  ],
+  "type": "default"
+}
