@@ -24,8 +24,6 @@ public class CamundaExercise2Application {
     private static final String DB_FILE_PATH = "db.json";
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    // Define a set of keys that should always appear in the db_log entries.
-    // These are based on the fields seen in the first record.
     private static final List<String> ALWAYS_INCLUDED_KEYS = Arrays.asList(
             "key",
             "invoice_id",
@@ -172,6 +170,7 @@ public class CamundaExercise2Application {
         return invoiceNumber;
     }
 
+    //External Task
     private static void addLogToDb(Map<String, Object> variables, List<String> alwaysIncludedKeys) {
         File dbFile = new File(DB_FILE_PATH);
         JsonNode rootNode;
