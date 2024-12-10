@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1fr2ryq" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Web Modeler" exporterVersion="0d4ab51" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="Decision_0s0rfvx" name="Invoice_amount">
+    <informationRequirement id="InformationRequirement_1d1pte3">
+      <requiredInput href="#InputData_1r0etys" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0r5z3n5">
+      <input id="Input_1" label="Amount_of_invoice" biodi:width="192">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Next Steps" name="ns" typeRef="boolean" />
+      <rule id="DecisionRule_152xaac">
+        <description>"Invoice check is mandatory"</description>
+        <inputEntry id="UnaryTests_0xugbh1">
+          <text>&gt;=10000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i9sec5">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e1qlfe">
+        <description>"no check required"</description>
+        <inputEntry id="UnaryTests_1vfvbv6">
+          <text>&lt;10000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03gvm48">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_089e84m">
+        <inputEntry id="UnaryTests_1yrvtni">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fh7iaq">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1r0etys" name="invoice" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0s0rfvx">
+        <dc:Bounds height="80" width="180" x="210" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0dputys" dmnElementRef="InputData_1r0etys">
+        <dc:Bounds height="45" width="125" x="157" y="328" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0gtgf11" dmnElementRef="InformationRequirement_1d1pte3">
+        <di:waypoint x="220" y="328" />
+        <di:waypoint x="300" y="200" />
+        <di:waypoint x="300" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

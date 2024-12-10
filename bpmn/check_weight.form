@@ -1,0 +1,63 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "0d4ab51"
+  },
+  "schemaVersion": 17,
+  "id": "Form_0pi1l6s",
+  "components": [
+    {
+      "text": "##### Select Products and Calculate Total Weight",
+      "type": "text",
+      "id": "Subheading_0",
+      "layout": {
+        "row": "row_0",
+        "columns": null
+      }
+    },
+    {
+      "label": "Select Products",
+      "values": [
+        {
+          "value": "product1",
+          "label": "Product1 (2000g)"
+        },
+        {
+          "value": "product2",
+          "label": "Product2 (1000g)"
+        },
+        {
+          "value": "product3",
+          "label": "Product3 (5000g)"
+        }
+      ],
+      "type": "checklist",
+      "id": "Multiselect_1",
+      "validate": {
+        "required": true
+      },
+      "key": "selectedProducts",
+      "layout": {
+        "row": "row_1",
+        "columns": null
+      }
+    },
+    {
+      "label": "Total weight in g",
+      "type": "number",
+      "layout": {
+        "row": "row_1",
+        "columns": null
+      },
+      "id": "Field_1nntiy3",
+      "key": "number_nhd58o",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

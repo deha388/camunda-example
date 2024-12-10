@@ -1,0 +1,23 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "0d4ab51"
+  },
+  "schemaVersion": 17,
+  "id": "Form_0mr6v2m",
+  "components": [
+    {
+      "label": "Amount_of_invoice",
+      "type": "number",
+      "layout": {
+        "row": "Row_0yx3slr",
+        "columns": null
+      },
+      "id": "Field_0d94se6",
+      "key": "number_8z5gkd"
+    }
+  ],
+  "type": "default"
+}
